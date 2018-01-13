@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Crud Cantantes</title>
+</h:head>
+
+<h:body>
+    <h1>Lista de cantantes</h1>
+<h:form>
+    <a href="#{request.contextPath}/singer/editar.xhtml">
+        Nuevo Cantante
+    </a>
+    <br/>
+    <br/>
+    <h:dataTable value="#{listarSinger.singers}" var="singer">
+        <h:column style="margin: 10%">
+            <f:facet name="header">Id</f:facet>
+            #{singer.id}
+        </h:column>
+
+        <h:column  style="margin: 10%">
+            <f:facet name="header">Nombre</f:facet>
+            #{singer.firstName}
+        </h:column>
+
+        <h:column  style="margin: 10%">
+            <f:facet name="header">Apellido</f:facet>
+            #{singer.lastName}
+        </h:column>
+
+        <h:column  style="margin: 10%">
+            <f:facet name="header">Fecha Nacimiento</f:facet>
+            #{singer.birthDate}
+        </h:column>
+
+        <h:column  style="margin: 10%">
+            <f:facet name="header">Acciones</f:facet>
+            <a href="#{request.contextPath}/singer/editar.xhtml?singer_id=#{singer.id}">
+                Editar
+            </a>
+            <a href="#{request.contextPath}/singer/instruments.xhtml?singer_id=#{singer.id}">
+                Instrumentos
+            </a>
+            <a href="#{request.contextPath}/singer/albums.xhtml?singer_id=#{singer.id}">
+                Albums
+            </a>
+        </h:column>
+    </h:dataTable>
+
+    <a class="nav-link" href="#{request.contextPath}/index.xhtml">Regresar</a>
+
+</h:form>
+</h:body>
+
+</html>

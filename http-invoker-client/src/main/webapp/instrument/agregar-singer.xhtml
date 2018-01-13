@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</h:head>
+
+<h:body>
+    <h2>Seleccione el cantante</h2>
+    <h:form>
+        <br/>
+        <label>Cantante</label>
+        <br/>
+
+        <h:selectOneMenu value="#{adminInstrument.singerId}">
+            <f:selectItems value="#{adminAlbum.singers}" var="singer" itemLabel="#{singer.firstName} #{singer.lastName}"
+                           itemValue="#{singer.id}"/>
+        </h:selectOneMenu>
+
+        <h:commandButton action="#{adminInstrument.agregarSinger}" value="Agregar Cantante"/>
+        <br/>
+
+    </h:form>
+
+    <a href="javascript:window.history.back();">Volver atrás</a>
+
+</h:body>
+</html>
