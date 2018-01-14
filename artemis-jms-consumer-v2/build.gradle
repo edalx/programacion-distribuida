@@ -214,7 +214,6 @@ dependencies {
     compile spring.data
     compile misc.guava
     compile db.dbcp2
-    compile db.mysql
     compile db.derby
     compile spring.web
     compile spring.webmvc
