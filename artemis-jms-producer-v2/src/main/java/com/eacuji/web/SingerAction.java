@@ -27,7 +27,7 @@ public class SingerAction implements Serializable {
     }
 
     @PostConstruct
-    public void init() {
+    private void init() {
         ApplicationContext context =
                 FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
         jmsTemplate = context.getBean(JmsTemplate.class);
