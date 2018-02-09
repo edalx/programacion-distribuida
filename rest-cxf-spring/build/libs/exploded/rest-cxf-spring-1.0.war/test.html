@@ -1,0 +1,129 @@
+<html>
+
+<head>
+	<style>
+		table {
+		    width: 50%;
+		}
+		th {
+		    background: #f1f1f1;
+		    font-weight: bold;
+		    padding: 6px;
+		}
+		td {
+		    background: #f9f9f9;
+		    padding: 6px;
+		}
+	</style>
+
+	<script src="jquery-3.3.1.js"></script>
+	
+	<script lang="JavaScript">
+		$(document).ready(function () {
+			
+			listar=function() {
+		  		$("#myTable").find("tr:gt(0)").remove();
+
+		  		$.getJSON('/cxf02/services/personas', function (data) {
+			    	
+			    	$('#json-text').text( JSON.stringify(data, undefined, 2) );
+			    	
+			      	$.each( data, function( index, item ) {
+			      		var row = $('<tr><td>' +item.id + '</td><td>' + item.nombre + '</td><td>' + item.direccion + '</td></tr>');
+			      		
+			      		$('#myTable').append(row);
+			      	});
+			    });
+			}
+			
+		  	$('#get-personas').click(function () {
+				
+		  		
+		  		listar( );
+		  		
+// 			    $.getJSON('/cxf02/services/personas', function (data) {
+			    	
+// 			    	$('#json-text').text( JSON.stringify(data) );
+			    	
+// 			      	$.each( data, function( index, item ) {
+// 			      		var row = $('<tr><td>' +item.id + '</td><td>' + item.nombre + '</td><td>' + item.direccion + '</td></tr>');
+			      		
+// 			      		$('#myTable').append(row);
+// 			      	});
+// 			    });
+		  	});
+		  	
+		  	// agregar
+		  	$("#add-personas").on('click', function(){
+	            // send ajax
+	            
+	            var pers = { 
+	            	"nombre": $('#nombre').val(), 
+	            	"direccion":$('#direccion').val() 
+	            };
+	            
+	            // alert( JSON.stringify(pers) );
+	            
+	            $.ajax({
+	                url: '/cxf02/services/personas',
+	                type : "POST",
+	                dataType : 'json',
+	                contentType: 'application/json',
+	                data : JSON.stringify(pers),
+	                success : function(result) {
+	                	listar( );
+	                	alert( 'Persona registrada.' );
+	                },
+	                error: function(xhr, resp, text) {
+	                	alert( "error: " + text );
+	                }
+	            })
+	        });
+		});
+
+	</script>
+
+</head>
+
+<body>
+	
+	<form id="formulario">
+		<table>
+			<tr>
+				<td>Nombre:</td>
+				<td><input type="text" id="nombre" size="30"></td>
+			</tr>
+			<tr>
+				<td>Dirección:</td>
+				<td><input type="text" id="direccion" size="30"></td>
+			</tr>
+		</table>
+		
+		<br/>
+		<input type="button" id="add-personas" value="Agregar"/>
+	</form>
+	
+	<br/>
+	<hr/>
+	<input type="button" id="get-personas" value="Listar personas"/>
+	<br/>	
+	<br/>
+	<b>DATOS:</b>
+	<table id="myTable">
+	    <tr>
+	        <th>ID</th>
+	        <th>NOMBRE</th>
+	        <th>DIRECCION</th>
+	    </tr>
+	</table>
+	
+	<br/>
+	<hr/>
+	<b>JSON:</b>
+	<pre id="json-text"></pre>
+	<hr/>
+	
+
+</body>
+
+</html>

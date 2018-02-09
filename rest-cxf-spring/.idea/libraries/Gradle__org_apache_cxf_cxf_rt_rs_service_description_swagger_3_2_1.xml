@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.cxf:cxf-rt-rs-service-description-swagger:3.2.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.cxf/cxf-rt-rs-service-description-swagger/3.2.1/32429b05e3b0fd3fc85f84038990325c0a82b2b3/cxf-rt-rs-service-description-swagger-3.2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.cxf/cxf-rt-rs-service-description-swagger/3.2.1/b461cbe2d629220838a88a673f252755c8205680/cxf-rt-rs-service-description-swagger-3.2.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

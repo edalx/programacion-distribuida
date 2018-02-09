@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.cxf:cxf-rt-rs-service-description:3.2.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.cxf/cxf-rt-rs-service-description/3.2.1/2684acea6da43b4bbf38636a2a84ab506fff742f/cxf-rt-rs-service-description-3.2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.cxf/cxf-rt-rs-service-description/3.2.1/84401bd164508e7f2461349e6fb7eacb8d644880/cxf-rt-rs-service-description-3.2.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

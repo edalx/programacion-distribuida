@@ -1,0 +1,11 @@
+WADL:
+
+	http://127.0.0.1:8090/app/app?_wadl
+
+swagger:
+
+	compile group: 'org.apache.cxf', name: 'cxf-rt-rs-service-description-swagger', version: '3.2.1'
+	compile group: 'org.webjars', name: 'swagger-ui', version: '3.9.2'
+
+    JSON: http://127.0.0.1:8090/app/swagger.json
+	UI  : http://127.0.0.1:8090/app/api-docs?/url=/swagger.json
