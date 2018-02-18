@@ -7,5 +7,8 @@ import java.util.List;
 public interface DataService {
 
     Data save(Data data);
-    List<Data> findAll();
+
+    Data findLast(Integer usb);
+
+    Iterable<Data> findAll();
 }

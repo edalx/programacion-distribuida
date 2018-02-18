@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class DataServiceImpl implements DataService {
+
     @Autowired
     private DataRepository dataRepository;
 
@@ -19,7 +20,12 @@ public class DataServiceImpl implements DataService {
     }
 
     @Override
-    public List<Data> findAll() {
+    public Data findLast(Integer usb) {
+        return dataRepository.findTopByUsbIdOrderByCreatedAtDesc(usb);
+    }
+
+    @Override
+    public Iterable<Data> findAll() {
         return dataRepository.findAll();
     }
 }

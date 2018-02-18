@@ -1,0 +1,7 @@
+mysql -u root -p -h localhost;
+create user 'edalx'@'localhost' identified by 'pa$word007';
+create database cargador_solar_db;
+create database planta_lampara_db;
+grant all privileges on cargador_solar_db.* to 'edalx'@'localhost';
+grant all privileges on planta_lampara_db.* to 'edalx'@'localhost';
+

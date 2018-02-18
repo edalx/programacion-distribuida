@@ -1,22 +1,26 @@
 package com.eacuji.dto;
 
-import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.data.annotation.Id;
+import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
-import java.io.Serializable;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
-@Table(name = "data")
-public class Data implements Serializable{
+public class Data {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @NotBlank
+
+    private Integer usbId;
+
+    private String estado;
+
     private Long duracion;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
 
     public Long getId() {
         return id;
@@ -24,6 +28,22 @@ public class Data implements Serializable{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getUsbId() {
+        return usbId;
+    }
+
+    public void setUsbId(Integer usbId) {
+        this.usbId = usbId;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public Long getDuracion() {
@@ -34,11 +54,22 @@ public class Data implements Serializable{
         this.duracion = duracion;
     }
 
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
     @Override
     public String toString() {
         return "Data{" +
                 "id=" + id +
+                ", usbId='" + usbId + '\'' +
+                ", estado='" + estado + '\'' +
                 ", duracion=" + duracion +
+                ", createdAt=" + createdAt +
                 '}';
     }
 }

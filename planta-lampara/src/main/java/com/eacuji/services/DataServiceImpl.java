@@ -5,8 +5,6 @@ import com.eacuji.entities.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class DataServiceImpl implements DataService {
     @Autowired
@@ -19,7 +17,7 @@ public class DataServiceImpl implements DataService {
     }
 
     @Override
-    public List<Data> findAll() {
+    public Iterable<Data> findAll() {
         return dataRepository.findAll();
     }
 }

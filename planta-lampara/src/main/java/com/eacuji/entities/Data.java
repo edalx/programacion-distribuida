@@ -1,25 +1,22 @@
 package com.eacuji.entities;
 
-import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.Id;
+import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "data")
-public class Data implements Serializable{
+public class Data {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @NotBlank
-    private Long duracion;
+
+    private Double voltaje;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created_at;
 
     public Long getId() {
         return id;
@@ -29,19 +26,28 @@ public class Data implements Serializable{
         this.id = id;
     }
 
-    public Long getDuracion() {
-        return duracion;
+    public Double getVoltaje() {
+        return voltaje;
     }
 
-    public void setDuracion(Long duracion) {
-        this.duracion = duracion;
+    public void setVoltaje(Double voltaje) {
+        this.voltaje = voltaje;
+    }
+
+    public Date getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
     }
 
     @Override
     public String toString() {
         return "Data{" +
                 "id=" + id +
-                ", duracion=" + duracion +
+                ", voltaje=" + voltaje +
+                ", created_at=" + created_at +
                 '}';
     }
 }
