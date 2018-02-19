@@ -1,6 +1,7 @@
 package com.eacuji.controllers;
 
 import com.eacuji.dto.Data;
+import com.eacuji.dto.DataTemp;
 import com.eacuji.services.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,20 +18,26 @@ public class DataController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(value = "/")
-    public Data create(@RequestBody Data data){
-        if(data.getEstado().equals("on")){
-            data.setDuracion(0L);
-            dataService.save(data);
-        }else{
-               Data temp=dataService.findLast(data.getUsbId());
-               Date fechaOut=new Date();
-               long in=temp.getCreatedAt().getTime();
-               long out=fechaOut.getTime();
-               long diff=(out-in)/1000;
-               data.setDuracion(diff);
-               dataService.save(data);
+    public Data create(@RequestBody DataTemp data) {
+        String usbId = data.getDato().split("-")[0];
+        String estado = data.getDato().split("-")[1];
+        Data nuevoDato = new Data();
+        nuevoDato.setUsbId(Integer.parseInt(usbId));
+        nuevoDato.setEstado(estado);
+        if (nuevoDato.getEstado().equals("on")) {
+            nuevoDato.setDuracion(0L);
+            dataService.save(nuevoDato);
+        } else {
+            Data temp = dataService.findLast(nuevoDato.getUsbId());
+            Date fechaOut = new Date();
+            long in = temp.getCreatedAt().getTime();
+            long out = fechaOut.getTime();
+            long diff = (out - in) / 1000;
+            nuevoDato.setDuracion(diff);
+            dataService.save(nuevoDato);
         }
-        return data;
+        System.out.println("Dato insertado: "+nuevoDato.toString());
+        return nuevoDato;
     }
 
     @ResponseStatus(HttpStatus.OK)
