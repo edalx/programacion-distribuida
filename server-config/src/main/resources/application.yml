@@ -1,0 +1,18 @@
+info:
+    component: SpringConfig-Server
+
+# HTTP Server
+server:
+    port: 8888
+
+spring:
+    # Spring Cloud Config Server Repository
+    cloud:
+        config:
+            server:
+                git:
+                uri: https://github.com/edalx/spring-server-config.git
+
+# Spring properties
+profiles:
+  active: dev
